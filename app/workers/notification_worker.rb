@@ -1,7 +1,10 @@
 class NotificationWorker
   include Sidekiq::Worker
 
-  def perform(task_uuid, user_email, status)
-    Notification.create(task_uuid: task_uuid, user_email: user_email, status: status)
+  def perform(options = {})
+    options = options.gsub("=>",":")
+    options = JSON.parse(options)
+
+    Notification.create(task_uuid: options["task_uuid"], user_email: options["user_email"], status: options["status"])
   end
 end

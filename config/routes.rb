@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :notifications, only: [:create]
+  resources :notifications, only: %i[create index]
 end

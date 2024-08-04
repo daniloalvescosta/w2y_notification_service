@@ -5,6 +5,10 @@ class NotificationsController < ApplicationController
     render json: { message: 'Notification created successfully' }, status: :created
   end
 
+  def index
+    render json: Notification.all, status: :ok
+  end
+
   private
 
   def notification_params

@@ -5,6 +5,7 @@ class NotificationWorker
     options = options.gsub("=>",":")
     options = JSON.parse(options)
 
-    Notification.create(task_uuid: options["task_uuid"], user_email: options["user_email"], status: options["status"])
+    notification = Notification.find_or_create_by(task_uuid: options["task_uuid"], user_email: options["user_email"])
+    notification.update(status: options["status"])
   end
 end

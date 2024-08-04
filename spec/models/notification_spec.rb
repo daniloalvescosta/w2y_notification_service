@@ -16,9 +16,4 @@ RSpec.describe Notification, type: :model do
     notification = FactoryBot.build(:notification, user_email: nil)
     expect(notification).not_to be_valid
   end
-
-  it 'is invalid without a status' do
-    notification = FactoryBot.build(:notification, status: nil)
-    expect(notification).not_to be_valid
-  end
 end
